@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Demo</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      color: #2563eb;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .result {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .code {
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Statistics Calculator</h1>
+    <p>Hard-coded data list:</p>
+    <div class="code" id="data-list"></div>
+
+    <div class="result">
+      <h2>Results:</h2>
+      <p>Mean: <span id="mean"></span></p>
+      <p>Variance: <span id="variance"></span></p>
+      <p>Standard Deviation: <span id="stddev"></span></p>
+      <p>25th Percentile: <span id="p25"></span></p>
+      <p>50th Percentile (Median): <span id="p50"></span></p>
+      <p>75th Percentile: <span id="p75"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Hard-coded data
+    const data = [5, 8, 12, 15, 18, 22, 26, 30, 34, 40];
+    document.getElementById("data-list").textContent = JSON.stringify(data);
+
+    // Mean
+    const mean = data.reduce((a, b) => a + b, 0) / data.length;
+
+    // Variance
+    const variance = data.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / data.length;
+
+    // Standard deviation
+    const stddev = Math.sqrt(variance);
+
+    // Percentile function
+    function percentile(arr, p) {
+      const sorted = [...arr].sort((a, b) => a - b);
+      const index = (p / 100) * (sorted.length - 1);
+      const lower = Math.floor(index);
+      const upper = Math.ceil(index);
+      if (lower === upper) return sorted[lower];
+      return sorted[lower] + (sorted[upper] - sorted[lower]) * (index - lower);
+    }
+
+    // Compute percentiles
+    const p25 = percentile(data, 25);
+    const p50 = percentile(data, 50);
+    const p75 = percentile(data, 75);
+
+    // Display results
+    document.getElementById("mean").textContent = mean.toFixed(2);
+    document.getElementById("variance").textContent = variance.toFixed(2);
+    document.getElementById("stddev").textContent = stddev.toFixed(2);
+    document.getElementById("p25").textContent = p25;
+    document.getElementById("p50").textContent = p50;
+    document.getElementById("p75").textContent = p75;
+  </script>
+</body>
+</html>
