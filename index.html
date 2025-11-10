@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Statistics Demo</title>
   <style>
+    :root {
+      --bg-color: #f8fafc;
+      --text-color: #333;
+      --accent-color: #2563eb;
+    }
+
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8fafc;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       text-align: center;
       margin: 0;
       padding: 40px;
+      transition: background-color 0.3s, color 0.3s;
     }
+
     h1 {
-      color: #2563eb;
+      color: var(--accent-color);
     }
+
     .container {
       max-width: 600px;
       margin: 0 auto;
@@ -23,16 +32,40 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, color 0.3s;
     }
+
     .result {
       margin-top: 20px;
       text-align: left;
     }
+
     .code {
       background: #f1f5f9;
       padding: 10px;
       border-radius: 6px;
       font-family: monospace;
+      overflow-x: auto;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
     }
   </style>
 </head>
@@ -50,6 +83,13 @@
       <p>25th Percentile: <span id="p25"></span></p>
       <p>50th Percentile (Median): <span id="p50"></span></p>
       <p>75th Percentile: <span id="p75"></span></p>
+    </div>
+
+    <div class="buttons">
+      <h3>🎨 Change Theme</h3>
+      <button onclick="setTheme('light')">Light</button>
+      <button onclick="setTheme('dark')">Dark</button>
+      <button onclick="setTheme('blue')">Blue</button>
     </div>
   </div>
 
@@ -89,6 +129,24 @@
     document.getElementById("p25").textContent = p25;
     document.getElementById("p50").textContent = p50;
     document.getElementById("p75").textContent = p75;
+
+    // Theme change function
+    function setTheme(mode) {
+      const root = document.documentElement;
+      if (mode === "light") {
+        root.style.setProperty("--bg-color", "#f8fafc");
+        root.style.setProperty("--text-color", "#333");
+        root.style.setProperty("--accent-color", "#2563eb");
+      } else if (mode === "dark") {
+        root.style.setProperty("--bg-color", "#1e293b");
+        root.style.setProperty("--text-color", "#f1f5f9");
+        root.style.setProperty("--accent-color", "#10b981");
+      } else if (mode === "blue") {
+        root.style.setProperty("--bg-color", "#e0f2fe");
+        root.style.setProperty("--text-color", "#0f172a");
+        root.style.setProperty("--accent-color", "#0284c7");
+      }
+    }
   </script>
 </body>
 </html>
