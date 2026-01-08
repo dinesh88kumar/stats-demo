@@ -5,7 +5,7 @@
   <title>Mini E-Commerce Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google tag (gtag.js) G-V4S503Y70N -->
+  <!-- ================= GOOGLE TAG ================= -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R1M0DHDXJ5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,171 +14,182 @@
     gtag('config', 'G-R1M0DHDXJ5');
   </script>
 
+  <!-- ================= TRIPLE WHALE ================= -->
+  <link rel="preconnect dns-prefetch" href="https://api.config-security.com/" crossorigin />
+  <link rel="preconnect dns-prefetch" href="https://conf.config-security.com/" crossorigin />
+  <script>
+  window.TriplePixelData = {
+    TripleName: "dinesh88kumar.github.io",
+    ver: "2.17",
+    plat: "SHOPIFY",
+    isHeadless: true
+  };
+  (function(W,H,A,L,E,_,B,N){
+    function O(U,T,P,H,R){
+      void 0===R&&(R=!1),H=new XMLHttpRequest,
+      P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","text/plain"))
+       :H.open("GET",U,!0),
+      H.send(JSON.stringify(P||{})),
+      H.onreadystatechange=function(){
+        4===H.readyState&&200===H.status
+        ?(R=H.responseText,U.includes("/first")?eval(R):P||(N[B]=R))
+        :(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))
+      }
+    }
+    if(N=window,!N[H+"sn"]){
+      N[H+"sn"]=1;
+      L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};
+      try{
+        A.setItem(H,1+(0|A.getItem(H)||0)),
+        (E=JSON.parse(A.getItem(H+"U")||"[]"))
+        .push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),
+        A.setItem(H+"U",JSON.stringify(E))
+      }catch(e){}
+      var i,m,p;
+      A.getItem('"!nC`')||(
+        _=A,A=N,
+        A[H]||(E=A[H]=function(t,e,a){
+          return void 0===a&&(a=[]),
+          "State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)
+        }),
+        E.s="Installed",E._q=[],E.ch=W,
+        B="configSecurityConfModel",N[B]=1,
+        O("https://conf.config-security.com/model",5),
+        i=L(),m=A[atob("c2NyZWVu")],
+        _.setItem("di_pmt_wt",i),
+        p={
+          id:i,
+          action:"profile",
+          host:A.TriplePixelData.TripleName,
+          plat:A.TriplePixelData.plat,
+          url:window.location.href.slice(0,500),
+          ref:document.referrer,
+          ver:A.TriplePixelData.ver
+        },
+        O("https://api.config-security.com/event",5,p),
+        O("https://api.config-security.com/first?host=dinesh88kumar.github.io&plat=SHOPIFY",5)
+      )
+    }
+  })("","TriplePixel",localStorage);
+  </script>
+
   <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --accent: #2563eb;
-    }
-
     body {
-      margin: 0;
-      padding: 30px;
       font-family: "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #f8fafc;
+      padding: 30px;
     }
-
-    h1 {
-      text-align: center;
-      color: var(--accent);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      margin-top: 30px;
     }
-
     .card {
-      background: var(--card);
-      border-radius: 12px;
+      background: white;
       padding: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
     }
-
     button {
-      background: var(--accent);
+      background: #2563eb;
       color: white;
       border: none;
       padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
     }
-
-    .cart {
-      margin-top: 40px;
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    input {
-      padding: 8px;
-      width: 220px;
-      margin-right: 10px;
-    }
-
-    .success { color: green; font-weight: bold; }
-    .error { color: red; font-weight: bold; }
   </style>
 </head>
 
 <body>
-<div class="container">
-  <h1>🛒 Mini E-Commerce Store</h1>
+<h1>🛒 Mini E-Commerce Store</h1>
 
-  <!-- PRODUCTS -->
-  <div class="products" id="product-list"></div>
+<div class="products" id="product-list"></div>
 
-  <!-- CART -->
-  <div class="cart">
-    <h2>🧾 Cart</h2>
-    <ul id="cart-items"></ul>
-    <p><strong>Total:</strong> ₹<span id="total">0</span></p>
+<h2>🧾 Cart</h2>
+<ul id="cart-items"></ul>
+<p>Total: ₹<span id="total">0</span></p>
 
-    <input type="text" id="coupon" placeholder="Enter coupon code" />
-    <button onclick="purchase()">Buy Now</button>
-
-    <p id="message"></p>
-  </div>
-</div>
+<input id="coupon" placeholder="Coupon code" />
+<button onclick="purchase()">Buy</button>
+<p id="msg"></p>
 
 <script>
   const products = [
-    { id: 1, name: "📘 JavaScript Book", price: 500 },
-    { id: 2, name: "📗 Python Book", price: 600 },
-    { id: 3, name: "🎧 Headphones", price: 1500 },
-    { id: 4, name: "⌨️ Keyboard", price: 1200 }
+    { id: 1, name: "JavaScript Book", price: 500 },
+    { id: 2, name: "Python Book", price: 600 },
+    { id: 3, name: "Headphones", price: 1500 }
   ];
 
   let cart = [];
 
   function renderProducts() {
-    const list = document.getElementById("product-list");
-    list.innerHTML = "";
-    products.forEach(p => {
-      list.innerHTML += `
+    document.getElementById("product-list").innerHTML =
+      products.map(p => `
         <div class="card">
           <h3>${p.name}</h3>
-          <p>Price: ₹${p.price}</p>
+          <p>₹${p.price}</p>
           <button onclick="addToCart(${p.id})">Add to Cart</button>
-        </div>`;
-    });
+        </div>
+      `).join("");
   }
 
   function addToCart(id) {
-    const product = products.find(p => p.id === id);
-    cart.push(product);
-    renderCart();
+    const p = products.find(x => x.id === id);
+    cart.push(p);
+    updateCart();
 
-    gtag('event', 'add_to_cart', {
-      item_name: product.name,
-      price: product.price
+    gtag("event", "add_to_cart", {
+      item_name: p.name,
+      value: p.price,
+      currency: "INR"
     });
   }
 
-  function renderCart() {
-    const items = document.getElementById("cart-items");
-    items.innerHTML = "";
+  function updateCart() {
     let total = 0;
+    document.getElementById("cart-items").innerHTML = cart.map(i => {
+      total += i.price;
+      return `<li>${i.name} - ₹${i.price}</li>`;
+    }).join("");
+    document.getElementById("total").innerText = total;
+  }
 
-    cart.forEach(item => {
-      total += item.price;
-      items.innerHTML += `<li>${item.name} - ₹${item.price}</li>`;
-    });
-
-    document.getElementById("total").textContent = total;
+  /* ================= PURCHASE + TRIPLE WHALE CONTACT ================= */
+  function fireTripleContact(email) {
+    (function TP() {
+      if (!email || !window.TriplePixel) {
+        setTimeout(TP, 400);
+        return;
+      }
+      TriplePixel("Contact", { email: email });
+    })();
   }
 
   function purchase() {
+    if (!cart.length) return;
+
     const code = document.getElementById("coupon").value.trim();
     let total = cart.reduce((s, i) => s + i.price, 0);
-    const msg = document.getElementById("message");
 
-    if (cart.length === 0) {
-      msg.textContent = "❌ Cart is empty!";
-      msg.className = "error";
-      return;
-    }
+    if (code.startsWith("FREE")) total = 0;
 
-    if (code.startsWith("FREE")) {
-      total = 0;
-      gtag('event', 'purchase', {
-        coupon: code,
-        value: 0,
-        currency: 'INR'
-      });
-      msg.textContent = "🎉 Purchase successful! Total = ₹0 (FREE coupon)";
-    } else {
-      gtag('event', 'purchase', {
-        value: total,
-        currency: 'INR'
-      });
-      msg.textContent = `✅ Purchase successful! Paid ₹${total}`;
-    }
+    // Simulated customer email
+    const customerEmail = "customer_" + Date.now() + "@example.com";
 
-    msg.className = "success";
+    gtag("event", "purchase", {
+      value: total,
+      currency: "INR",
+      coupon: code || undefined
+    });
+
+    fireTripleContact(customerEmail);
+
+    document.getElementById("msg").innerText =
+      `✅ Purchase complete. Email tracked: ${customerEmail}`;
+
     cart = [];
-    renderCart();
+    updateCart();
   }
 
   renderProducts();
